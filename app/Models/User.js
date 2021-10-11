@@ -3,10 +3,28 @@
 /** @type {import('@adonisjs/framework/src/Hash')} */
 const Hash = use('Hash')
 
-/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const Model = use('Model')
+const Model = require('./BaseModel')
+
 
 class User extends Model {
+  static get columns(){
+    return [
+      'id',
+      'username',
+      'password',
+      'email',
+      'avatar'
+    ]
+  }
+
+  static get readonly(){
+    return ['id', 'email']
+  }
+
+  static get hidden(){
+    return ['password']
+  }
+
   static boot () {
     super.boot()
 
@@ -33,6 +51,10 @@ class User extends Model {
    */
   tokens () {
     return this.hasMany('App/Models/Token')
+  }
+
+  static get traits(){
+    return ['NoTimestamp']
   }
 }
 

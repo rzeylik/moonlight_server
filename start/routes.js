@@ -18,3 +18,8 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 Route.get('/ping', ({ response }) => response.res('pong!'))
+Route.get('/parse', 'TestController.parseURL')
+Route.group(()=>{
+  Route.get('/', 'FilmController.getAllFilms')
+  Route.post('/', 'FilmController.createFilm').middleware(['valid:FilmCreate'])
+}).prefix('api/v1/films')
