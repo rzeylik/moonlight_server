@@ -1,0 +1,46 @@
+paths:
+  /api/v1/films:
+    get:
+      tags: ['film']
+      description: Get all films
+      produces: [application/json]
+      responses: [200]
+    post:
+      tags: [ 'film' ]
+      description: Create new film
+      parameters:
+        - name: name
+          in: formData
+          description: Film's name
+          type: string
+          required: true
+        - name: description
+          in: formData
+          description: Film's description
+          type: string
+          required: true
+        - name: publish_year
+          in: formData
+          description: Film's publish year
+          type: number
+          required: true
+        - name: rating
+          in: formData
+          description: Film's rating
+          type: decimal
+        - name: age_restriction
+          in: formData
+          description: Age restriction for this film
+          type: number
+        - name: duration
+          in: formData
+          description: Film's duration
+          type: time
+        - name: producer
+          in: formData
+          description: Film's producer
+          type: string
+      produces: [ application/json ]
+      responses: [ 200 ]
+
+

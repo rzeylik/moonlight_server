@@ -30,6 +30,10 @@ class Film extends Model {
       'producer',
     ]
   }
+
+  static get traits(){
+    return ['NoTimestamp']
+  }
 }
 
 module.exports = Film

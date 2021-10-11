@@ -18,6 +18,10 @@ class Session extends Model {
       'date_time',
     ]
   }
+
+  static get traits(){
+    return ['NoTimestamp']
+  }
 }
 
 module.exports = Session

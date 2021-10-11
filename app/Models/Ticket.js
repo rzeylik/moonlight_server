@@ -19,6 +19,10 @@ class Ticket extends Model {
       'place'
     ]
   }
+
+  static get traits(){
+    return ['NoTimestamp']
+  }
 }
 
 module.exports = Ticket
