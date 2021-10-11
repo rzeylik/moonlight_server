@@ -21,5 +21,5 @@ Route.get('/ping', ({ response }) => response.res('pong!'))
 Route.get('/parse', 'TestController.parseURL')
 Route.group(()=>{
   Route.get('/', 'FilmController.getAllFilms')
-  Route.post('/', 'FilmController.createFilm')
+  Route.post('/', 'FilmController.createFilm').middleware(['valid:FilmCreate'])
 }).prefix('api/v1/films')
