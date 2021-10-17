@@ -79,7 +79,7 @@ module.exports = {
   |
   */
   xss: {
-    enabled: true,
+    enabled: false,
     enableOnOldIE: false
   },
 
