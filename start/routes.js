@@ -21,5 +21,11 @@ Route.get('/ping', ({ response }) => response.res('pong!'))
 Route.get('/parse', 'TestController.parseURL')
 Route.group(()=>{
   Route.get('/', 'FilmController.getAllFilms')
-  Route.post('/', 'FilmController.createFilm').middleware(['valid:FilmCreate'])
+  Route.post('/', 'FilmController.createFilm').middleware(['auth', 'valid:FilmCreate'])
 }).prefix('api/v1/films')
+
+Route.group(()=>{
+  Route.post('/auth/register', 'AuthController.register')
+  Route.post('/auth/login', 'AuthController.login')
+  Route.get('/me', 'AuthController.me').middleware(['auth'])
+}).prefix('api/v1/account')
