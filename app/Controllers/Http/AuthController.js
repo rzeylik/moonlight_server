@@ -10,7 +10,12 @@ class AuthController {
     user.username = username
     user.email = email
     user.password = password
-    await user.save()
+
+    try{
+      await user.save()
+    } catch(e){
+      return response.status(400).send('User with this credentials already exists')
+    }
 
     const accessToken = await auth.generate(user)
     return response.json({"user": user, "access_token": accessToken})
@@ -26,7 +31,7 @@ class AuthController {
       }
     }
     catch (e) {
-      return response.json({message: 'You first need to register!'})
+      return response.status(403).json({message: 'You first need to register!'})
     }
   }
 

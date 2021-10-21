@@ -31,6 +31,7 @@
     "@adonisjs/validator": "^5.0.6",
     "adonis-swagger": "git+https://github.com/ProductCrafters/adonis-swagger.git",
     "bluebird": "^3.7.2",
+    "date-fns": "^2.25.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "pg": "^8.7.1",
@@ -41,7 +42,7 @@
     "debug": "^4.3.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "prettier": "^2.3.2"
+    "prettier": "^2.4.1"
   },
   "autoload": {
     "App": "./app"

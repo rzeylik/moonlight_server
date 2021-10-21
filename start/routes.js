@@ -22,6 +22,7 @@ Route.get('/parse', 'TestController.parseURL')
 Route.group(()=>{
   Route.get('/', 'FilmController.getAllFilms')
   Route.post('/', 'FilmController.createFilm').middleware(['auth', 'valid:FilmCreate'])
+  Route.get('/date', 'FilmController.getFilmsByDate').middleware(['valid:FilmByDate'])
 }).prefix('api/v1/films')
 
 Route.group(()=>{

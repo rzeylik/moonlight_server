@@ -43,5 +43,17 @@ paths:
           type: string
       produces: [ application/json ]
       responses: [ 200 ]
-
+  /api/v1/films/date:
+    get:
+      tags: [ 'film' ]
+      security: [ bearerAuth: [ ] ]
+      description: Get all films by date
+      parameters:
+        - name: date
+          in: query
+          description: films by date
+          type: date
+          default: '12.10.2021'
+      produces: [ application/json]
+      responses: [200]
 

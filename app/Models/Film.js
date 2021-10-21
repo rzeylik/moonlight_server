@@ -1,6 +1,7 @@
 'use strict'
 
 const Model = require('./BaseModel')
+const Session = require("@adonisjs/session/src/Session");
 
 class Film extends Model {
   static get columns(){
@@ -33,6 +34,10 @@ class Film extends Model {
 
   static get traits(){
     return ['NoTimestamp']
+  }
+
+  sessions(){
+    return this.hasMany('App/Models/Session')
   }
 }
 
