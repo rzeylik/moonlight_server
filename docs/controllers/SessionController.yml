@@ -1,0 +1,25 @@
+paths:
+  /api/v1/sessions:
+    post:
+      tags: [ 'session' ]
+      security: [bearerAuth: []]
+      description: Create session for films
+      parameters:
+        - name: film_id
+          in: formData
+          description: Film's id
+          type: string
+          required: true
+        - name: price
+          in: formData
+          description: Session's price
+          type: decimal
+          default: 90
+        - name: date_time
+          in: formData
+          default: 22.10.2021 11:30
+          description: Session date_time
+          type: string
+          required: true
+      produces: [ application/json ]
+      responses: [ 200 ]
