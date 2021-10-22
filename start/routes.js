@@ -19,14 +19,18 @@ const Route = use('Route')
 Route.on('/').render('welcome')
 Route.get('/ping', ({ response }) => response.res('pong!'))
 Route.get('/parse', 'TestController.parseURL')
-Route.group(()=>{
+Route.group(() => {
   Route.get('/', 'FilmController.getAllFilms')
   Route.post('/', 'FilmController.createFilm').middleware(['auth', 'valid:FilmCreate'])
   Route.get('/date', 'FilmController.getFilmsByDate').middleware(['valid:FilmByDate'])
 }).prefix('api/v1/films')
 
-Route.group(()=>{
+Route.group(() => {
   Route.post('/auth/register', 'AuthController.register')
   Route.post('/auth/login', 'AuthController.login')
   Route.get('/me', 'AuthController.me').middleware(['auth'])
 }).prefix('api/v1/account')
+
+Route.group(() => {
+  Route.post('/', 'SessionController.createSession').middleware(['auth', 'valid:CreateSession'])
+}).prefix('api/v1/sessions')

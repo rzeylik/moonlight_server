@@ -3,7 +3,7 @@
 This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
 
 1. Bodyparser
-2. Session
+2. CreateSession
 3. Authentication
 4. Web security middleware
 5. CORS
