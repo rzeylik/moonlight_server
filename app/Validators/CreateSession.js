@@ -19,7 +19,7 @@ function parseDateString(value, originalValue) {
   const newValue = isDate(originalValue)
     ? originalValue
     : parse(originalValue, 'dd.MM.yyyy HH:mm', new Date())
-  return new Date(moment(newValue).add(3, 'hours'))
+  return new Date(moment(newValue))
 }
 
 module.exports = CreateSession
