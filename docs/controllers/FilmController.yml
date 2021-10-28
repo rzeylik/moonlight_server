@@ -37,9 +37,18 @@ paths:
           in: formData
           description: Film's duration
           type: time
+          required: true
         - name: producer
           in: formData
           description: Film's producer
+          type: string
+        - name: small_image
+          in: formData
+          description: Film's small image
+          type: string
+        - name: big_image
+          in: formData
+          description: Film's big image
           type: string
       produces: [ application/json ]
       responses: [ 200 ]
@@ -56,4 +65,16 @@ paths:
           default: '12.10.2021'
       produces: [ application/json]
       responses: [200]
-
+  /api/v1/films/{id}:
+    delete:
+      security: [ bearerAuth: [ ] ]
+      tags: [ 'film' ]
+      description: Delete film by id
+      parameters:
+        - in: path
+          name: id
+          description: Film id
+          type: integer
+          required: true
+      produces: [ application/json ]
+      responses: [ 200 ]

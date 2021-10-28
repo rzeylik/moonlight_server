@@ -23,6 +23,7 @@ Route.group(() => {
   Route.get('/', 'FilmController.getAllFilms')
   Route.post('/', 'FilmController.createFilm').middleware(['auth', 'valid:FilmCreate'])
   Route.get('/date', 'FilmController.getFilmsByDate').middleware(['valid:FilmByDate'])
+  Route.delete('/:id', 'FilmController.deleteFilm').middleware(['auth', 'valid:Id'])
 }).prefix('api/v1/films')
 
 Route.group(() => {
@@ -32,5 +33,7 @@ Route.group(() => {
 }).prefix('api/v1/account')
 
 Route.group(() => {
+  Route.get('/', 'SessionController.getSessions')
   Route.post('/', 'SessionController.createSession').middleware(['auth', 'valid:CreateSession'])
+  Route.delete('/:id', 'SessionController.deleteSession').middleware(['auth', 'valid:Id'])
 }).prefix('api/v1/sessions')

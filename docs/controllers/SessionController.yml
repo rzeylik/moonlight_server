@@ -1,5 +1,10 @@
 paths:
   /api/v1/sessions:
+    get:
+      tags: [ 'session' ]
+      description: Get all sessions
+      produces: [ application/json ]
+      responses: [200]
     post:
       tags: [ 'session' ]
       security: [bearerAuth: []]
@@ -20,6 +25,19 @@ paths:
           default: 22.10.2021 11:30
           description: Session date_time
           type: string
+          required: true
+      produces: [ application/json ]
+      responses: [ 200 ]
+  /api/v1/sessions/{id}:
+    delete:
+      security: [ bearerAuth: [ ] ]
+      tags: [ 'session' ]
+      description: Delete session by id
+      parameters:
+        - in: path
+          name: id
+          description: session id
+          type: integer
           required: true
       produces: [ application/json ]
       responses: [ 200 ]

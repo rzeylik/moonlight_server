@@ -1,5 +1,6 @@
 'use strict'
 
+const File = use('App/Classes/File')
 const FilmService = use('App/Services/FilmService')
 
 class FilmController {
@@ -11,7 +12,7 @@ class FilmController {
   async createFilm({ request, response }) {
     const filmData = request.all()
     const film = await FilmService.createFilm(filmData)
-    response.res(film)
+    File.response.res(film)
   }
 
   async updateFilm({ request, response }) {
@@ -24,6 +25,12 @@ class FilmController {
     const { date } = request.all()
     const films = await FilmService.getFilmsByDate(date)
     response.res(films)
+  }
+
+  async deleteFilm({ request, response }) {
+    const { id } = request.all()
+    const result = await FilmService.deleteFilmById(id)
+    response.res(result)
   }
 }
 

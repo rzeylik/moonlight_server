@@ -20,7 +20,8 @@ const providers = [
   '@adonisjs/session/providers/SessionProvider',
   '@adonisjs/auth/providers/AuthProvider',
   '@adonisjs/validator/providers/ValidatorProvider',
-  'adonis-swagger/providers/SwaggerProvider'
+  'adonis-swagger/providers/SwaggerProvider',
+  '@adonisjs/drive/providers/DriveProvider',
 ]
 
 /*
@@ -32,9 +33,7 @@ const providers = [
 | Providers for migrations, tests etc.
 |
 */
-const aceProviders = [
-  '@adonisjs/lucid/providers/MigrationsProvider'
-]
+const aceProviders = ['@adonisjs/lucid/providers/MigrationsProvider']
 
 /*
 |--------------------------------------------------------------------------

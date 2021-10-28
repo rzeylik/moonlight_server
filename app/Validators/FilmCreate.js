@@ -12,11 +12,16 @@ class FilmCreate extends Base {
       publish_year: yup.number().integer().min(1900).max(new Date().getFullYear()),
       rating: yup.number().min(0).max(10),
       age_restriction: yup.number().min(0).max(21),
-      duration: yup.mixed().required().test('is-valid-time', 'Time should includes 0-23 hours, 0-59 minutes', function(value){
-        const [hours, minutes] = value.split(':')
-        return hours>=0&&hours<24&&minutes>=0&&minutes<60
-      }),
-      producer: yup.string().trim().min(4)
+      duration: yup
+        .mixed()
+        .required()
+        .test('is-valid-time', 'Time should includes 0-23 hours, 0-59 minutes', function (value) {
+          const [hours, minutes] = value.split(':')
+          return hours >= 0 && hours < 24 && minutes >= 0 && minutes < 60
+        }),
+      producer: yup.string().trim().min(4),
+      small_image: yup.mixed(),
+      big_image: yup.mixed(),
     })
 }
 

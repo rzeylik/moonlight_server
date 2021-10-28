@@ -43,14 +43,10 @@ class FilmService {
         ])
       })
       .fetch()
-    // return Database.raw(
-    //   Database.query()
-    //     .select('films.*', Database.raw('_s.date_item::date as d'))
-    //     .from('films')
-    //     .innerJoin({ _s: 'sessions' }, '_s.film_id', 'films.id')
-    //     .whereBetween('_s.date_time', [date, nextDate])
-    //     .toString()
-    // )
+  }
+
+  static async deleteFilmById(id) {
+    return Film.query().where({ id }).delete()
   }
 }
 
