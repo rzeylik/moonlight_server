@@ -40,3 +40,9 @@ Route.group(() => {
   Route.post('/', 'SessionController.createSession').middleware(['auth', 'valid:CreateSession'])
   Route.delete('/:id', 'SessionController.deleteSession').middleware(['auth', 'valid:Id'])
 }).prefix('api/v1/sessions')
+
+Route.group(() => {
+  Route.get('/:id', 'TicketController.getTicketBySessionId').middleware(['valid:Id'])
+  Route.get('/:id/user', 'TicketController.getTicketByUserId').middleware(['auth', 'valid:Id'])
+  Route.post('/:id', 'TicketController.createTicket').middleware(['auth', 'valid:Id,SessionCreate'])
+}).prefix('api/v1/tickets')
