@@ -32,6 +32,7 @@ Route.group(() => {
   Route.post('/auth/register', 'AuthController.register')
   Route.post('/auth/login', 'AuthController.login')
   Route.get('/me', 'AuthController.me').middleware(['auth'])
+  Route.put('/', 'UserController.updateUser').middleware(['auth', 'valid:UpdateUser'])
 }).prefix('api/v1/account')
 
 Route.group(() => {

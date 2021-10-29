@@ -5,27 +5,27 @@ const Hash = use('Hash')
 
 const Model = require('./BaseModel')
 
-
 class User extends Model {
-  static get columns(){
-    return [
-      'id',
-      'username',
-      'password',
-      'email',
-      'avatar'
-    ]
+  static get columns() {
+    return ['id', 'username', 'password', 'email', 'avatar']
   }
 
-  static get readonly(){
+  static get readonly() {
     return ['id', 'email']
   }
 
-  static get hidden(){
+  static get hidden() {
     return ['password']
   }
 
-  static boot () {
+  /**
+   *
+   */
+  static get Serializer() {
+    return 'App/Serializers/UserSerializer'
+  }
+
+  static boot() {
     super.boot()
 
     /**
@@ -49,11 +49,11 @@ class User extends Model {
    *
    * @return {Object}
    */
-  tokens () {
+  tokens() {
     return this.hasMany('App/Models/Token')
   }
 
-  static get traits(){
+  static get traits() {
     return ['NoTimestamp']
   }
 }
