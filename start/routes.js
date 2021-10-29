@@ -22,8 +22,10 @@ Route.get('/parse', 'TestController.parseURL')
 Route.group(() => {
   Route.get('/', 'FilmController.getAllFilms')
   Route.post('/', 'FilmController.createFilm').middleware(['auth', 'valid:FilmCreate'])
+  Route.put('/:id', 'FilmController.updateFilm').middleware(['auth', 'valid:Id,FilmUpdate'])
   Route.get('/date', 'FilmController.getFilmsByDate').middleware(['valid:FilmByDate'])
   Route.delete('/:id', 'FilmController.deleteFilm').middleware(['auth', 'valid:Id'])
+  Route.get('/:id', 'FilmController.getFilm').middleware(['valid:Id'])
 }).prefix('api/v1/films')
 
 Route.group(() => {

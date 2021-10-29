@@ -28,8 +28,9 @@ class FilmService {
    * @returns {Promise<*|undefined>}
    */
   static async updateFilm({ id, filmData }) {
-    const film = await Film.query().where({ id }).first()
-    return film.updateItem(filmData)
+    const film = await Film.findOrFail(id)
+    await film.updateItem(filmData)
+    return film
   }
 
   static async getFilmsByDate(date) {
@@ -45,8 +46,22 @@ class FilmService {
       .fetch()
   }
 
+  /**
+   *
+   * @param id
+   * @returns {Promise<*>}
+   */
   static async deleteFilmById(id) {
     return Film.query().where({ id }).delete()
+  }
+
+  /**
+   *
+   * @param id
+   * @returns {Promise<*>}
+   */
+  static async getFilmById(id) {
+    return Film.query().where({ id }).first()
   }
 }
 

@@ -25,7 +25,7 @@ module.exports = {
     |
     */
     local: {
-      root: Helpers._appRoute,
+      root: Env.get('STATIC_PATH'),
       driver: 'local',
     },
 

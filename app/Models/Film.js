@@ -1,10 +1,10 @@
 'use strict'
 
 const Model = require('./BaseModel')
-const Session = require("@adonisjs/session/src/Session");
+const Session = require('@adonisjs/session/src/Session')
 
 class Film extends Model {
-  static get columns(){
+  static get columns() {
     return [
       'id',
       'name',
@@ -15,11 +15,11 @@ class Film extends Model {
       'duration',
       'producer',
       'large_image',
-      'small_image'
+      'small_image',
     ]
   }
 
-  static get readonly(){
+  static get readonly() {
     return [
       'id',
       'name',
@@ -32,11 +32,18 @@ class Film extends Model {
     ]
   }
 
-  static get traits(){
+  static get traits() {
     return ['NoTimestamp']
   }
 
-  sessions(){
+  /**
+   *
+   */
+  static get Serializer() {
+    return 'App/Serializers/FilmSerializer'
+  }
+
+  sessions() {
     return this.hasMany('App/Models/Session')
   }
 }
