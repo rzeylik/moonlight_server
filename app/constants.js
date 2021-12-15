@@ -1,5 +1,5 @@
 const constants = {
-  MAX_PLACES: 22,
+  MAX_PLACES: 100,
 }
 
 module.exports = constants

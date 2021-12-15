@@ -9,8 +9,8 @@ class SessionController {
   }
 
   async createSession({ request, response }) {
-    const { film_id, price, date_time } = request.all()
-    const session = await SessionService.createSession({ film_id, price, date_time })
+    const { film_id, price, date_time, type } = request.all()
+    const session = await SessionService.createSession({ film_id, price, date_time, type })
     response.res(session)
   }
 

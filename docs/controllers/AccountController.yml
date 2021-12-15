@@ -10,6 +10,12 @@ paths:
           type: string
           default: user
           required: true
+        - name: type
+          in: formData
+          description: User's type
+          type: integer
+          default: "0"
+          required: false
         - name: email
           in: formData
           description: User's email

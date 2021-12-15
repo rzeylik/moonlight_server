@@ -7,7 +7,7 @@ const Model = require('./BaseModel')
 
 class User extends Model {
   static get columns() {
-    return ['id', 'username', 'password', 'email', 'avatar']
+    return ['id', 'username', 'password', 'email', 'avatar', 'type']
   }
 
   static get readonly() {
@@ -51,6 +51,10 @@ class User extends Model {
    */
   tokens() {
     return this.hasMany('App/Models/Token')
+  }
+
+  comments() {
+    return this.hasMany('App/Models/Comment')
   }
 
   static get traits() {

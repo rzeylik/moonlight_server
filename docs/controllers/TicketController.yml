@@ -39,6 +39,18 @@ paths:
           name: id
           type: number
           description: Sesssion id
-          required: true
       produces: [ application/json ]
       responses: [ 200 ]
+  /api/v1/tickets/{id}/delete:
+    delete:
+      tags: [ 'ticket' ]
+      security: [ bearerAuth: [ ] ]
+      description: Delete user's tickets
+      parameters:
+        - in: path
+          name: id
+          type: number
+          description: tikets id
+      produces: [ application/json ]
+      responses: [ 200 ]
+

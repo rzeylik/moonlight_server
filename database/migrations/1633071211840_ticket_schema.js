@@ -4,16 +4,16 @@
 const Schema = use('Schema')
 
 class TicketSchema extends Schema {
-  up () {
+  up() {
     this.create('tickets', (table) => {
       table.increments()
-      table.integer('user_id').references('id').inTable('users')
-      table.integer('session_id').references('id').inTable('sessions')
+      table.integer('user_id').references('id').inTable('users').onDelete('cascade')
+      table.integer('session_id').references('id').inTable('sessions').onDelete('cascade')
       table.integer('place').notNullable()
     })
   }
 
-  down () {
+  down() {
     this.drop('tickets')
   }
 }

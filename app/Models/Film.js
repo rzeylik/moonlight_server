@@ -46,6 +46,10 @@ class Film extends Model {
   sessions() {
     return this.hasMany('App/Models/Session')
   }
+
+  comments() {
+    return this.hasMany('App/Models/Comment')
+  }
 }
 
 module.exports = Film

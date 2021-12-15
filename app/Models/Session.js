@@ -4,7 +4,7 @@ const Model = require('./BaseModel')
 
 class Session extends Model {
   static get columns() {
-    return ['id', 'film_id', 'date_time', 'price']
+    return ['id', 'film_id', 'date_time', 'price', 'type']
   }
   static get readonly() {
     return ['id', 'film_id', 'date_time']

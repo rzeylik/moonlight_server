@@ -22,11 +22,17 @@ Route.get('/parse', 'TestController.parseURL')
 Route.group(() => {
   Route.get('/', 'FilmController.getAllFilms')
   Route.post('/', 'FilmController.createFilm').middleware(['auth', 'valid:FilmCreate'])
+  Route.get('/image', 'FilmController.getFilmImage')
   Route.put('/:id', 'FilmController.updateFilm').middleware(['auth', 'valid:Id,FilmUpdate'])
   Route.get('/date', 'FilmController.getFilmsByDate').middleware(['valid:FilmByDate'])
   Route.delete('/:id', 'FilmController.deleteFilm').middleware(['auth', 'valid:Id'])
   Route.get('/:id', 'FilmController.getFilm').middleware(['valid:Id'])
 }).prefix('api/v1/films')
+
+Route.group(() => {
+  Route.get('/:film_id', 'CommentsController.getComment')
+  Route.post('/:film_id', 'CommentsController.createCommentFilm').middleware(['auth'])
+}).prefix('api/v1/comments')
 
 Route.group(() => {
   Route.post('/auth/register', 'AuthController.register')
@@ -43,6 +49,12 @@ Route.group(() => {
 
 Route.group(() => {
   Route.get('/:id', 'TicketController.getTicketBySessionId').middleware(['valid:Id'])
-  Route.get('/:id/user', 'TicketController.getTicketByUserId').middleware(['auth', 'valid:Id'])
+  Route.get('/:id/user', 'TicketController.getTicketByUserId').middleware([
+    'auth',
+    'valid:IdNotRequired',
+  ])
   Route.post('/:id', 'TicketController.createTicket').middleware(['auth', 'valid:Id,SessionCreate'])
+  Route.delete('/:id/delete', 'TicketController.deleteTicketUser').middleware(['auth', 'valid:Id'])
 }).prefix('api/v1/tickets')
+
+Route.get('/test1', 'TestController.createSessions')

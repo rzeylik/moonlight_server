@@ -1,7 +1,6 @@
 const moment = require('moment')
 
 const Film = use('App/Models/Film')
-const Database = use('Database')
 
 class FilmService {
   /**
@@ -62,6 +61,14 @@ class FilmService {
    */
   static async getFilmById(id) {
     return Film.query().where({ id }).first()
+  }
+
+  static async getFilms(search) {
+    const query = Film.query()
+    if (search) {
+      query.where('name', 'ilike', `%${search}%`)
+    }
+    return query.fetch()
   }
 }
 

@@ -3,6 +3,11 @@ paths:
     get:
       tags: ['film']
       description: Get all films
+      parameters:
+        - name: search
+          in: query
+          description: Film's name
+          type: string
       produces: [application/json]
       responses: [200]
     post:
@@ -139,3 +144,14 @@ paths:
           type: file
       produces: [ application/json ]
       responses: [ 200 ]
+  /api/v1/films/image:
+    get:
+      tags: [ 'film' ]
+      description: Get image films
+      parameters:
+        - name: small_image
+          in: query
+          description: films image name
+          type: string
+      produces: [ application/json]
+      responses: [200]

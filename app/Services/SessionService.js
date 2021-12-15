@@ -5,12 +5,13 @@ class SessionService {
     return Session.all()
   }
 
-  static async createSession({ film_id, price, date_time }) {
+  static async createSession({ film_id, price, date_time, type }) {
     const session = new Session()
 
     session.film_id = film_id
     session.price = price
     session.date_time = date_time
+    session.type = type
     await session.save()
 
     return session

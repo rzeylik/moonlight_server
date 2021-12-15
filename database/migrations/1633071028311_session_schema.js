@@ -4,17 +4,17 @@
 const Schema = use('Schema')
 
 class SessionSchema extends Schema {
-  up () {
+  up() {
     this.create('sessions', (table) => {
       table.increments()
-      table.integer('film').references('id').inTable('films')
+      table.integer('film').references('id').inTable('films').onDelete('cascade')
       table.dateTime('date_time').notNullable()
       table.decimal('price').notNullable()
       table.unique(['film', 'date_time'])
     })
   }
 
-  down () {
+  down() {
     this.drop('sessions')
   }
 }

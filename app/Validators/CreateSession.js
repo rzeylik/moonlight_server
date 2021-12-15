@@ -12,6 +12,7 @@ class CreateSession extends Base {
       film_id: yup.number().integer().positive().required(),
       price: yup.number().positive().min(50).default(90),
       date_time: yup.date().transform(parseDateString).required(),
+      type: yup.number().positive().min(1).default(1),
     })
 }
 

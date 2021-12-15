@@ -1,0 +1,30 @@
+paths:
+  /api/v1/comments/{film_id}:
+    post:
+      tags: [ 'comment' ]
+      security: [bearerAuth: []]
+      description: Create new comment
+      parameters:
+        - name: film_id
+          in: path
+          description: Id film
+          type: number
+          required: true
+        - name: message
+          in: formData
+          description: comments Film
+          type: string
+          required: true
+      produces: [ application/json ]
+      responses: [ 200 ]
+    get:
+      tags: [ 'comments' ]
+      description: Get by id
+      parameters:
+        - in: path
+          name: film_id
+          description: comment id
+          type: integer
+          required: true
+      produces: [ application/json ]
+      responses: [ 200 ]

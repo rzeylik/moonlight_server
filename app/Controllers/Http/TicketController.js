@@ -40,6 +40,18 @@ class TicketController {
     const ticket = await TicketService.createTicket(auth.user.id, id, places)
     response.res(ticket)
   }
+
+  /**
+   *
+   * @param request
+   * @param response
+   * @returns {Promise<void>}
+   */
+  async deleteTicketUser({ request, auth, response }) {
+    const { id } = request.all()
+    const ticket = await TicketService.deleteTicketById(id, auth.user.id)
+    response.res(ticket)
+  }
 }
 
 module.exports = TicketController
